@@ -1,0 +1,31 @@
+---
+title: Home
+layout: default
+---
+
+<div ng-controller="MainCtrl">
+  <h3>Use the following form to generate a Github issue URL</h3>
+
+  <div>
+    <div>
+      <span>Owner:</span>
+      <input type="text" ng-model="ctx.owner">
+    </div>
+    <div>
+      <span>Repo:</span>
+      <input type="text" ng-model="ctx.repo">
+    </div>
+    <div>
+      <span>Title:</span>
+      <input type="text" ng-model="ctx.title">
+    </div>
+    <div>
+      <span>Body:</span>
+      <input type="text" ng-model="ctx.body">
+    </div>
+  </div>
+
+  <div>
+    <span ng-bind="generate()"></span>
+  </div>
+</div>
