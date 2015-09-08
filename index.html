@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Github Issue Templates : Home</title>
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/css/site.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand">Issue Templates</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="container" ng-controller="MainCtrl">
+  <div class="page-header">
+    <h3>Github Issue Template Link Generator</h3>
+  </div>
+  <p class="lead">Use the following form to generate a Github issue URL</p>
+
+  <form class="form-inline">
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" class="form-control" ng-model="ctx.owner" placeholder="owner">
+        <div class="input-group-addon">/</div>
+        <input type="text" class="form-control" ng-model="ctx.repo" placeholder="repo">
+      </div>
+    </div>
+  </form>
+  <br />
+  <form>
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" ng-model="ctx.title" placeholder="Title">
+    </div>
+    <div class="form-group">
+      <label>Body</label>
+      <p class="help-block">Use markdown like you would in a regular Github issue.</p>
+      <textarea class="form-control" ng-model="ctx.body" rows="6"></textarea>
+    </div>
+    <div class="form-group">
+      <label>URL</label>
+      <div class="input-group">
+        <input type="text" class="form-control" readonly ng-value="generate()">
+        <div class="btn btn-default input-group-addon" clipboard text="generate()" aria-hidden="true">copy</div>
+      </div>
+    </div>
+  </form>
+</div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted"><a href="https://github.com/doowb/">Brian Woodward</a> &copy; 2005</p>
+    </div>
+  </footer>
+  
+  <script src="/assets/js/app.js"></script>
+</body>
+</html>
