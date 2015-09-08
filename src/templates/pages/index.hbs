@@ -3,29 +3,40 @@ title: Home
 layout: default
 ---
 
-<div ng-controller="MainCtrl">
-  <h3>Use the following form to generate a Github issue URL</h3>
+{{> navbar }}
 
-  <div>
-    <div>
-      <span>Owner:</span>
-      <input type="text" ng-model="ctx.owner">
-    </div>
-    <div>
-      <span>Repo:</span>
-      <input type="text" ng-model="ctx.repo">
-    </div>
-    <div>
-      <span>Title:</span>
-      <input type="text" ng-model="ctx.title">
-    </div>
-    <div>
-      <span>Body:</span>
-      <input type="text" ng-model="ctx.body">
-    </div>
+<div class="container" ng-controller="MainCtrl">
+  <div class="page-header">
+    <h3>Github Issue Template Link Generator</h3>
   </div>
+  <p class="lead">Use the following form to generate a Github issue URL</p>
 
-  <div>
-    <span ng-bind="generate()"></span>
-  </div>
+  <form class="form-inline">
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" class="form-control" ng-model="ctx.owner" placeholder="owner">
+        <div class="input-group-addon">/</div>
+        <input type="text" class="form-control" ng-model="ctx.repo" placeholder="repo">
+      </div>
+    </div>
+  </form>
+  <br />
+  <form>
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" ng-model="ctx.title" placeholder="Title">
+    </div>
+    <div class="form-group">
+      <label>Body</label>
+      <p class="help-block">Use markdown like you would in a regular Github issue.</p>
+      <textarea class="form-control" ng-model="ctx.body" rows="6"></textarea>
+    </div>
+    <div class="form-group">
+      <label>URL</label>
+      <div class="input-group">
+        <input type="text" class="form-control" readonly ng-value="generate()">
+        <div class="btn btn-default input-group-addon" clipboard text="generate()" aria-hidden="true">copy</div>
+      </div>
+    </div>
+  </form>
 </div>

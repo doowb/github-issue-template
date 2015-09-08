@@ -22,6 +22,9 @@ var browserify = require('browserify');
 var debowerify = require('debowerify');
 var watchify = require('watchify');
 
+var utils = require('./lib/utils');
+var copy = utils.copy(assemble);
+
 assemble.task('load', function (done) {
   assemble.data('src/data/*.json');
   assemble.layouts('src/templates/layouts/*.hbs');
@@ -37,9 +40,12 @@ assemble.task('site', ['load'], function(){
     .pipe(connect.reload());
 });
 
-assemble.task('vendor', function () {
-  return assemble.copy(['vendor/**/*'], '_gh_pages/assets/vendor')
-    .pipe(connect.reload());
+assemble.task('vendor', function (done) {
+  utils.series([
+    copy(['vendor/bootstrap/dist/css/*.*'], '_gh_pages/assets/css'),
+    copy(['vendor/bootstrap/dist/fonts/*.*'], '_gh_pages/assets/fonts'),
+    copy(['vendor/bootstrap/dist/js/bootstrap.min.js'], '_gh_pages/assets/js'),
+  ], done);
 });
 
 assemble.task('assets', function () {
