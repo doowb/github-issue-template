@@ -42,5 +42,10 @@
   },
   "dependencies": {
     "angular-clipboard": "^1.0.1"
+  },
+  "verb": {
+    "related": {
+      "list": "helper-issue"
+    }
   }
 }
